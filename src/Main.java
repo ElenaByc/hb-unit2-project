@@ -8,6 +8,13 @@ public class Main {
         RedVelvet redVelvet = new RedVelvet();
         Chocolate chocolate = new Chocolate();
 
+        ArrayList<Drink> drinkMenu = new ArrayList<>();
+        Drink water = new Drink();
+        Soda soda = new Soda();
+        Milk milk = new Milk();
+
+
+        // Cupcakes
         System.out.println("We are in the middle of creating the cupcake menu");
         System.out.println("We currently have three cupcakes on the menu but we need to decide on pricing");
 
@@ -15,7 +22,7 @@ public class Main {
 
         // get price for standard cupcake
         System.out.println("We are deciding on the price for our standard cupcake.");
-        System.out.println("Here is the description:");
+        System.out.print("Here is the description: ");
         cupcake.type();
 
         System.out.println("How much would you like to charge for the cupcake?");
@@ -27,7 +34,7 @@ public class Main {
 
         // get price for red velvet cupcake
         System.out.println("We are deciding on the price for our red velvet cupcake.");
-        System.out.println("Here is the description:");
+        System.out.print("Here is the description: ");
         redVelvet.type();
 
         System.out.println("How much would you like to charge for the cupcake?");
@@ -39,7 +46,7 @@ public class Main {
 
         // get price for chocolate cupcake
         System.out.println("We are deciding on the price for our chocolate cupcake.");
-        System.out.println("Here is the description:");
+        System.out.print("Here is the description: ");
         chocolate.type();
 
         System.out.println("How much would you like to charge for the cupcake?");
@@ -60,6 +67,60 @@ public class Main {
             cupcake1.type();
             System.out.println("price: " + cupcake1.getPrice());
         }
+        System.out.println();
+
+        // Drinks
+        System.out.println("We are in the middle of creating the drink menu.");
+        System.out.println("We currently have three types of drinks on the menu but we need to decide on pricing");
+
+        // get price for bottled water
+        System.out.println("We are deciding on the price for our bottled water.");
+        System.out.print("Here is the description: ");
+        water.type();
+
+        System.out.println("How much would you like to charge for the water bottle?");
+        System.out.print("Input a numerical number taken to 2 decimal places: ");
+
+        priceText = input.nextLine();
+        price = Double.parseDouble(priceText);
+        water.setPrice(price);
+
+        // get price for bottle of soda
+        System.out.println("We are deciding on the price for our bottle of soda.");
+        System.out.print("Here is the description: ");
+        soda.type();
+
+        System.out.println("How much would you like to charge for the bottled soda?");
+        System.out.print("Input a numerical number taken to 2 decimal places: ");
+
+        priceText = input.nextLine();
+        price = Double.parseDouble(priceText);
+        soda.setPrice(price);
+
+        // get price for bottle of milk
+        System.out.println("We are deciding on the price for our bottle of milk.");
+        System.out.print("Here is the description: ");
+        milk.type();
+
+        System.out.println("How much would you like to charge for the bottled milk?");
+        System.out.print("Input a numerical number taken to 2 decimal places: ");
+
+        priceText = input.nextLine();
+        price = Double.parseDouble(priceText);
+        milk.setPrice(price);
+
+        // add water, soda and milk to drinkMenu
+        drinkMenu.add(water);
+        drinkMenu.add(soda);
+        drinkMenu.add(milk);
+
+        // print drinkMenu
+        System.out.println();
+        for (Drink drink1 : drinkMenu) {
+            drink1.type();
+            System.out.println("price: " + drink1.getPrice());
+        }
+
     }
 }
 
@@ -125,4 +186,3 @@ class Milk extends Drink {
         System.out.println("A bottle of milk");
     }
 }
-
