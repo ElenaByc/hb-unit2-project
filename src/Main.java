@@ -113,3 +113,16 @@ class Drink {
     }
 }
 
+class Soda extends Drink {
+    public void type() {
+        System.out.println("A bottle of soda");
+    }
+}
+
+//Create a new class named Milk that extends from Drink
+class Milk extends Drink {
+    public void type() {
+        System.out.println("A bottle of milk");
+    }
+}
+
