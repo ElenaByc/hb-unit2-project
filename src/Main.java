@@ -95,3 +95,21 @@ class Chocolate extends Cupcake {
         System.out.println("A chocolate based cupcake, with chocolate frosting");
     }
 }
+
+// Create a new class named Drink. This will be the class all other drinks inherit from
+class Drink {
+    public double price;
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void type() {
+        System.out.println("A bottle of water");
+    }
+}
+
