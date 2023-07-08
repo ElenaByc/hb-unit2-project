@@ -121,6 +121,8 @@ public class Main {
             System.out.println("price: " + drink1.getPrice());
         }
 
+        new Order(cupcakeMenu, drinkMenu);
+
     }
 }
 
