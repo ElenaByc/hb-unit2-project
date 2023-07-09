@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
@@ -99,7 +103,7 @@ public class Order {
             System.out.println(order.get(1));
 
             // Create a double variable named subtotal and set it to 0.0;
-            Double subTotal = 0.0;
+            double subTotal = 0.0;
 
             for (int i = 2; i < order.size(); i++) {
                 // Check if order at i is equal to cupcakeMenu at 0
@@ -111,8 +115,7 @@ public class Order {
                     cupcakeMenu.get(1).type();
                     System.out.println(cupcakeMenu.get(1).getPrice());
                     subTotal = subTotal + cupcakeMenu.get(1).getPrice();
-                }
-                if (order.get(i).equals(cupcakeMenu.get(2))) {
+                } else if (order.get(i).equals(cupcakeMenu.get(2))) {
                     cupcakeMenu.get(2).type();
                     System.out.println(cupcakeMenu.get(2).getPrice());
                     subTotal = subTotal + cupcakeMenu.get(2).getPrice();
@@ -131,9 +134,56 @@ public class Order {
                 }
             }
             System.out.println("$" + subTotal + "\n");
+
+            // Create a new CreateFile()
+            new CreateFile();
+            // Create a new WriteToFile() with the parameter order
+            new WriteToFile(order);
         } else {
             System.out.println("Have a nice day then");
         }
-
     }
 }
+
+class CreateFile {
+    public CreateFile() {
+        try {
+            File salesData = new File("salesData.txt");
+            if (salesData.createNewFile()) {
+                System.out.println("File created: " + salesData.getName());
+            } else {
+                System.out.println("File already exists");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred");
+        }
+    }
+}
+
+class WriteToFile {
+    public WriteToFile(ArrayList<Object> order) {
+        try {
+            // Create a new FileWriter object named fw, and set it equal to new FileWriter whose constructor
+            // parameters are the name of the object "salesData.txt", and the boolean true, which is an option that
+            // allows for appending to the file
+            FileWriter fw = new FileWriter("salesData.txt", true);
+
+            // Create a new PrintWriter object named salesWriter, and set it equal to new PrintWriter object whose
+            // constructor parameter is the FileWriter object fw created previously.
+            PrintWriter salesWriter = new PrintWriter(fw);
+
+            // Print each value in order.
+            for (Object o : order) {
+                salesWriter.println(o);
+            }
+
+            // Stop the writer from continuing to run
+            salesWriter.close();
+
+            System.out.println("Successfully wrote to the file");
+        } catch (IOException e) {
+            System.out.println("An error occurred");
+        }
+    }
+}
+
